@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+</head>
+<body>
+
+<h1>Index page access by users</h1>
+
+<div sec:authorize='hasAuthority("ADMIN")'>This content is only shown
+    to administrators.§§</div>
+
+<div sec:authorize='hasAuthority("USERS")'>This content is only shown
+    to USERS.§§</div>
+
+<p>Don't have an account? <a class="link" th:href="@{/register}" >Register here</a></p>
+
+<a th:href="@{/login}">Login</a>
+
+
+<p>Public Information:</p>
+<ul>
+    <li><a th:href="@{/about}">About Us</a></li>
+    <li><a th:href="@{/contact}">Contact Us</a></li>
+</ul>
+</body>
+</html>

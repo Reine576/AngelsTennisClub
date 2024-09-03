@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdminHome</title>
+    <link rel="stylesheet" href="/Styles.css">
+</head>
+<body>
+<div class="Greeting">
+    <h1>Welcome Admin</h1>
+</div>
+<div class="container">
+    <div class="card">
+        <h4 class="card-title">Coaches</h4>
+        <p class="card-text">To manage coaches click here</p>
+        <a class="card-link" th:href="@{/admin/coaches}">Manage</a>
+    </div>
+    <div class="card">
+        <h4 class="card-title">Courts</h4>
+        <p class="card-text">To manage courts click here</p>
+        <a class="card-link" th:href="@{/admin/courts}">Manage</a>
+    </div>
+</div>
+</body>
+</html>

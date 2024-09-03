@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Courts</title>
+    <link rel="stylesheet" href="/Styles.css">
+</head>
+<body>
+
+<h1>Manage Courts</h1>
+
+<div>
+    <a th:href="@{/admin/courts/add}" class="btn btn-primary">Add New Court</a>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Court Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="court : ${courts}">
+        <td th:text="${court.id}">1</td>
+        <td th:text="${court.courtName}">Court 1</td>
+        <td>
+            <a th:href="@{/admin/courts/edit/{id}(id=${court.id})}" class="btn btn-secondary">Edit</a>
+            <a th:href="@{/admin/courts/delete/{id}(id=${court.id})}" class="btn btn-danger"
+               onclick="return confirm('Are you sure you want to delete this court?');">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Court Form</title>
+    <link rel="stylesheet" href="/Styles.css">
+</head>
+<body>
+
+<h1 th:text="${#strings.isEmpty(court.id)} ? 'Add New Court' : 'Edit Court'"></h1>
+
+
+
+<form th:action="@{/admin/courts/add}" method="post" th:object="${court}">
+    <input type="hidden" name="id" th:field="*{id}">
+    <div>
+        <label for="courtName">Court Name:</label>
+        <label for="name"></label><input id="name" type="text" class="input-field" required th:field="*{courtName}" name="name" placeholder="Enter court name">
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <a th:href="@{/admin/courts}" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+<form th:action="@{'/admin/courts/edit/' + ${court.id}}" th:if="${court.id != null}" th:object="${court}" method="post">
+    <div>
+        <label for="courtName">Court Name:</label>
+        <input type="text" id="courtName" th:field="*{courtName}" required />
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <a th:href="@{/admin/courts}" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+</body>
+</html>

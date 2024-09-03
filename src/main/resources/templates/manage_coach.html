@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Coaches</title>
+    <link rel="stylesheet" th:href="@{/static/style.css}">
+</head>
+<body>
+<h1>Manage Coaches</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Certification</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="coach : ${coaches}">
+        <td th:text="${coach.coachID}"></td>
+        <td th:text="${coach.firstName}"></td>
+        <td th:text="${coach.lastName}"></td>
+        <td th:text="${coach.certification}"></td>
+        <td>
+            <a th:href="@{/admin/coaches/edit/{id}(id=${coach.coachID})}">Edit</a> |
+            <a th:href="@{/admin/coaches/delete/{id}(id=${coach.coachID})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/admin/coaches/add}">Add New Coach</a>
+</body>
+</html>

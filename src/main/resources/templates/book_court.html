@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book a Court</title>
+    <link rel="stylesheet" href="/static/Styles.css">
+</head>
+<body>
+<h1>Book a Court</h1>
+<form th:action="@{/user/bookings}" method="post">
+    <label for="court">Court:</label>
+    <select id="court" name="courtId">
+        <option th:each="court : ${courts}" th:value="${court.courtID}" th:text="${court.courtName}"></option>
+    </select>
+
+    <label for="coach">Coach:</label>
+    <select id="coach" name="coachId">
+        <option th:each="coach : ${coaches}" th:value="${coach.coachID}" th:text="${coach.firstName + ' ' + coach.lastName}"></option>
+    </select>
+
+    <label for="bookingTime">Booking Time:</label>
+    <input type="datetime-local" id="bookingTime" name="bookingTime">
+
+    <button type="submit">Book</button>
+</form>
+</body>
+</html>
